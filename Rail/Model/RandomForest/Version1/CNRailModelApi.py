@@ -98,10 +98,16 @@ def data_preprocessing(Rail_df):
      encode = preprocessing.LabelEncoder()
      Rail_df['GangId'] = GangId_dictionary[Rail_df['GangId'].values[0]]
      Rail_df['TrackId'] = TrackID_dictionary[Rail_df['TrackId'].values[0]]
-     Rail_df['MegaWorkBlock']=Rail_df['MegaWorkBlock'].cat.add_categories('No')
+     try:
+        Rail_df['MegaWorkBlock']=Rail_df['MegaWorkBlock'].cat.add_categories('No')
+     except:
+        print("")
      Rail_df['MegaWorkBlock'].fillna('No', inplace=True)
      Rail_df['MegaWorkBlock']=MegaWorkBlock_dictionary[Rail_df['MegaWorkBlock'].values[0]]
-     Rail_df['ShadowWorkBlock']=Rail_df['ShadowWorkBlock'].cat.add_categories('No')
+     try:
+        Rail_df['ShadowWorkBlock']=Rail_df['ShadowWorkBlock'].cat.add_categories('No')
+     except:
+        print("")
      Rail_df['ShadowWorkBlock'].fillna('No', inplace=True)
      Rail_df['ShadowWorkBlock']=ShadowWorkBlock_dictionary[Rail_df['ShadowWorkBlock'].values[0]]
      #Rail_df['SplitWorkBlock'].fillna(0, inplace=True)
